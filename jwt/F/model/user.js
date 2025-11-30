@@ -1,5 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const url = 'mongodb://127.0.0.1:27017/jwt';
+
+mongoose.connect(url)
+.then(() => {
+    console.log('Connected to MongoDB')
+})
+.catch((error) => {
+    console.log('Error connecting to MongoDB', error)
+})
+
 const userSchema = new Schema({
     name: {
         type: String,
@@ -20,4 +30,5 @@ const userSchema = new Schema({
 })
 
 const User = mongoose.model('User', userSchema);
+
 module.exports = User;

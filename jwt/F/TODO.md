@@ -1,0 +1,1 @@
+- [ ] Change /register route from GET to POST in jwt/F/routes/user.js
