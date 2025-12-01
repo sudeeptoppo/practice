@@ -77,11 +77,11 @@ router.post("/login", async (req, res) => {
     process.env.JWT_SECRET,
     { expiresIn: "1h" }
   );
-  res.json({
-    message: "User logged in successfully",
-    token: token,
-    abc: user,
-  });
+  res.render("home.ejs", { token: token });
+});
+
+router.get("/home", (req, res) => {
+  res.render("home.ejs");
 });
 
 //logout
@@ -89,6 +89,7 @@ router.get("/logout", auth, (req, res) => {
   console.log(req.user);
   res.json({
     message: "User logged out successfully",
+    user: req.user,
   });
 });
 module.exports = router;
